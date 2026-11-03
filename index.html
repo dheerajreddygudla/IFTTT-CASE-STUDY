@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFTTT Case Study</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <a class="brand" href="#" data-page="overview">
+            <span class="brand-icon">✦</span>
+            <span>IFTTT <small>CASE STUDY</small></span>
+        </a>
+
+        <p class="side-label">WORKSPACE</p>
+
+        <nav>
+            <button class="nav-link active" data-page="overview">▦ Overview</button>
+            <button class="nav-link" data-page="applets">◈ My Applets</button>
+            <button class="nav-link" data-page="builder">＋ Create Applet</button>
+            <button class="nav-link" data-page="opportunities">✧ Opportunity Scout</button>
+            <button class="nav-link" data-page="calendar">▦ Calendar</button>
+            <button class="nav-link" data-page="activity">↗ Activity</button>
+            <button class="nav-link" data-page="analytics">▥ Analytics</button>
+            <button class="nav-link" data-page="integrations">⌘ Integrations</button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="demo-note">
+                <span class="status-dot"></span>
+                <div>
+                    <b>Demo workspace</b>
+                    <small>Data saved on this device</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <div class="eyebrow">AUTOMATION WORKSPACE</div>
+                <h1 id="page-heading">Overview</h1>
+            </div>
+
+            <div class="top-actions">
+                <span class="live-pill">● Demo mode</span>
+                <div class="avatar">U</div>
+            </div>
+        </header>
+
+        <!-- OVERVIEW -->
+        <section class="page active" id="overview">
+
+            <div class="welcome-row">
+                <div>
+                    <p class="eyebrow">YOUR AUTOMATION AT A GLANCE</p>
+                    <h2>Make everyday workflows simpler.</h2>
+                    <p class="muted">Monitor your applets, deadlines and recent activity.</p>
+                </div>
+                <button class="primary-btn" data-go="builder">＋ Create applet</button>
+            </div>
+
+            <div class="stats-grid" id="overview-cards"></div>
+
+            <div class="content-grid">
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h3>Your applets</h3>
+                            <p class="muted">Your automations</p>
+                        </div>
+                        <button class="text-btn" data-go="applets">View all →</button>
+                    </div>
+                    <div id="overview-applet-list"></div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-head">
+                        <div>
+                            <h3>Upcoming schedule</h3>
+                            <p class="muted">Your next calendar items</p>
+                        </div>
+                        <button class="text-btn" data-go="calendar">Calendar →</button>
+                    </div>
+                    <div id="upcoming-list"></div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-head">
+                    <h3>Recent activity</h3>
+                    <button class="text-btn" data-go="activity">Full history →</button>
+                </div>
+                <div id="overview-activity"></div>
+            </div>
+
+        </section>
+
+        <!-- MY APPLETS -->
+        <section class="page" id="applets">
+
+            <div class="section-intro">
+                <div>
+                    <h2>My Applets</h2>
+                    <p class="muted">Manage your automations.</p>
+                </div>
+                <button class="primary-btn" data-go="builder">＋ Create applet</button>
+            </div>
+
+            <div class="filter-row">
+                <input type="search" id="applet-search" placeholder="Search applets...">
+
+                <select id="applet-filter">
+                    <option value="all">All applets</option>
+                    <option value="enabled">Enabled</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+
+            <div class="cards" id="all-cards"></div>
+
+        </section>
+
+        <!-- CREATE APPLET -->
+        <section class="page" id="builder">
+
+            <div class="section-intro">
+                <div>
+                    <h2>Create an Applet</h2>
+                    <p class="muted">Build your own If This, Then That automation.</p>
+                </div>
+            </div>
+
+            <div class="builder-layout">
+
+                <form class="panel builder-form" id="builder-form">
+
+                    <label>
+                        Applet name
+                        <input name="name" required placeholder="Enter applet name">
+                    </label>
+
+                    <label>
+                        Description
+                        <textarea name="description" rows="2" placeholder="Describe your automation"></textarea>
+                    </label>
+
+                    <div class="builder-step">
+                        <span>1</span>
+                        <div>
+                            <b>IF THIS — Trigger</b>
+                            <p class="muted">What event starts the automation?</p>
+                        </div>
+                    </div>
+
+                    <label>
+                        Trigger
+                        <select name="trigger" required>
+                            <option value="">Choose a trigger</option>
+                            <option>A new assignment is added</option>
+                            <option>A calendar event is approaching</option>
+                            <option>A new opportunity is discovered</option>
+                            <option>Energy usage crosses a threshold</option>
+                            <option>Weather conditions change</option>
+                            <option>A software build completes</option>
+                            <option>A scheduled time is reached</option>
+                        </select>
+                    </label>
+
+                    <div class="builder-step">
+                        <span>2</span>
+                        <div>
+                            <b>IF — Condition</b>
+                            <p class="muted">Add an optional condition.</p>
+                        </div>
+                    </div>
+
+                    <label>
+                        Condition
+                        <input name="condition" placeholder="Example: Deadline within 24 hours">
+                    </label>
+
+                    <div class="builder-step">
+                        <span>3</span>
+                        <div>
+                            <b>THEN THAT — Action</b>
+                            <p class="muted">What happens next?</p>
+                        </div>
+                    </div>
+
+                    <label>
+                        Action
+                        <select name="action" required>
+                            <option value="">Choose an action</option>
+                            <option>Show a dashboard notification</option>
+                            <option>Add an item to the calendar</option>
+                            <option>Create a reminder</option>
+                            <option>Save the opportunity to drafts</option>
+                            <option>Record an activity update</option>
+                        </select>
+                    </label>
+
+                    <button class="primary-btn full" type="submit">
+                        Create my applet
+                    </button>
+
+                </form>
+
+                <div class="panel preview-panel">
+                    <p class="eyebrow">WORKFLOW PREVIEW</p>
+                    <h3>Your automation logic</h3>
+
+                    <div class="logic-card">
+                        <span>IF THIS</span>
+                        <b id="preview-trigger">Choose a trigger</b>
+                    </div>
+
+                    <div class="logic-arrow">↓</div>
+
+                    <div class="logic-card">
+                        <span>IF</span>
+                        <b id="preview-condition">Optional condition</b>
+                    </div>
+
+                    <div class="logic-arrow">↓</div>
+
+                    <div class="logic-card">
+                        <span>THEN THAT</span>
+                        <b id="preview-action">Choose an action</b>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- OPPORTUNITY SCOUT -->
+        <section class="page" id="opportunities">
+
+            <div class="section-intro">
+                <div>
+                    <h2>Opportunity Scout</h2>
+                    <p class="muted">Explore and save useful opportunities.</p>
+                </div>
+                <span class="sample-label">SAMPLE DATA</span>
+            </div>
+
+            <div class="opportunity-banner">
+                <div>
+                    <p class="eyebrow">DISCOVER · REVIEW · SAVE</p>
+                    <h2>Keep useful opportunities in one place.</h2>
+                    <p>Explore sample internships, competitions and programs.</p>
+                </div>
+                <span class="banner-icon">✧</span>
+            </div>
+
+            <div class="cards" id="opportunity-list"></div>
+
+            <div class="panel">
+                <h3>Saved drafts</h3>
+                <div id="saved-opportunities"></div>
+            </div>
+
+        </section>
+
+        <!-- CALENDAR -->
+        <section class="page" id="calendar">
+
+            <div class="section-intro">
+                <div>
+                    <h2>Calendar</h2>
+                    <p class="muted">Manage assignments, tasks and deadlines.</p>
+                </div>
+                <button class="primary-btn" id="show-event-form">＋ Add event</button>
+            </div>
+
+            <div class="calendar-layout">
+
+                <div class="panel calendar-panel">
+
+                    <div class="calendar-toolbar">
+                        <button class="icon-btn" id="prev-month">‹</button>
+                        <h3 id="calendar-month">Month Year</h3>
+                        <button class="icon-btn" id="next-month">›</button>
+                        <button class="today-btn" id="today-btn">Today</button>
+                    </div>
+
+                    <div class="calendar-grid weekday-row">
+                        <div>Sun</div><div>Mon</div><div>Tue</div>
+                        <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+                    </div>
+
+                    <div class="calendar-grid" id="calendar-days"></div>
+
+                    <div class="calendar-legend">
+                        <span><i class="dot assignment"></i> Assignment</span>
+                        <span><i class="dot task"></i> Task</span>
+                        <span><i class="dot event"></i> Event</span>
+                    </div>
+
+                </div>
+
+                <div class="panel day-panel">
+                    <p class="eyebrow">SELECTED DATE</p>
+                    <h3 id="selected-date-title">Select a date</h3>
+                    <div id="selected-day-events"></div>
+                </div>
+
+            </div>
+
+            <!-- ADD EVENT FORM -->
+            <form class="panel event-form hidden" id="event-form">
+
+                <div class="panel-head">
+                    <h3>Add calendar item</h3>
+                    <button type="button" class="icon-btn" id="close-event-form">×</button>
+                </div>
+
+                <div class="form-grid">
+
+                    <label>
+                        Title
+                        <input name="title" required placeholder="Event or assignment name">
+                    </label>
+
+                    <label>
+                        Type
+                        <select name="type">
+                            <option value="assignment">Assignment</option>
+                            <option value="task">Task</option>
+                            <option value="event">Event</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Date
+                        <input name="date" type="date" required>
+                    </label>
+
+                    <label>
+                        Time
+                        <input name="time" type="time">
+                    </label>
+
+                </div>
+
+                <label>
+                    Notes
+                    <textarea name="notes" rows="2" placeholder="Additional details"></textarea>
+                </label>
+
+                <div class="form-actions">
+                    <button type="button" class="secondary-btn" id="cancel-event">Cancel</button>
+                    <button class="primary-btn" type="submit">Save to calendar</button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- ACTIVITY -->
+        <section class="page" id="activity">
+
+            <div class="section-intro">
+                <div>
+                    <h2>Activity</h2>
+                    <p class="muted">View your automation history.</p>
+                </div>
+                <button class="secondary-btn" id="clear-activity">Clear history</button>
+            </div>
+
+            <div class="panel" id="full-activity"></div>
+
+        </section>
+
+        <!-- ANALYTICS -->
+        <section class="page" id="analytics">
+
+            <div class="section-intro">
+                <div>
+                    <h2>Analytics</h2>
+                    <p class="muted">Understand your automation performance.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid" id="analytics-cards"></div>
+
+            <div class="panel">
+                <h3>Applet run comparison</h3>
+                <div id="bars" class="bar-chart"></div>
+            </div>
+
+        </section>
+
+        <!-- INTEGRATIONS -->
+        <section class="page" id="integrations">
+
+            <div class="section-intro">
+                <div>
+                    <h2>Integrations</h2>
+                    <p class="muted">Services represented in this case study.</p>
+                </div>
+            </div>
+
+            <div class="integration-grid" id="integration-list"></div>
+
+            <p class="muted tiny">
+                These are illustrative integrations. Real connections require APIs,
+                authentication and backend implementation.
+            </p>
+
+        </section>
+
+        <footer>IFTTT Case Study · Educational demonstration</footer>
+
+    </main>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
